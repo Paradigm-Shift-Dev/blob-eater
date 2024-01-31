@@ -52,12 +52,16 @@ footer {
 
 h1, h2 {
   margin-bottom: 0.5em;
-  text-align: center;
+  text-align: left;
 }
 
 p {
-  text-align: center;
   max-width: 512px;
+  margin-bottom: 2em;
+}
+
+.centerAlign {
+  text-align: center;
 }
 
 a {
