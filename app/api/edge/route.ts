@@ -1,4 +1,5 @@
 import { list } from '@vercel/blob';
+import { del } from '@vercel/blob';
 import { NextRequest, NextResponse } from 'next/server';
  
 export const config = {
@@ -6,7 +7,7 @@ export const config = {
 };
 
 // Helper function
-function goneIn60Minutes(uploadedAt: string, now: string): boolean {
+function tooYoungToDie(uploadedAt: string, now: string): boolean {
     // Convert both times to Date objects
     const uploadedAtDate = new Date(uploadedAt);
     const nowDate = new Date(now);
@@ -21,23 +22,23 @@ export async function GET(req: NextRequest) {
   const { blobs } = await list();
   const blobCount = blobs.length;
   let blobsEaten = 0;
-  let kilobytes = 0;
+  let bytes = 0;
   if (blobCount > 0) {
       try {
-          // do get 
         for (let blob in blobs) {
-            // console.log(blobs[blob]);
-
             // While the BLOB EATER is young, we recommend to let it feed on all file types. 
             // The .pathname property could be used to filter feed if long term blob storage is needed
             const creationTimeStamp = blobs[blob].uploadedAt; 
             const creationTime = creationTimeStamp.toISOString(); // Creation time
             const currentTime = new Date().toISOString(); // Current time
-            if (!goneIn60Minutes(creationTime, currentTime)) {
+            if (!tooYoungToDie(creationTime, currentTime)) {
                 // Eat the blob!
+                const blobUrl = blobs[blob].url;
+                // console.log(blobs[blob])
+                await del(blobUrl);
                 blobsEaten = blobsEaten + 1;
                 // Count the bytes eaten
-                kilobytes = kilobytes + blobs[blob].size;
+                bytes = bytes + blobs[blob].size;
             }
         }
     } catch(error) {
@@ -47,9 +48,10 @@ export async function GET(req: NextRequest) {
     }
   }
   const blobsLeft = blobCount - blobsEaten;
+  const message = blobsEaten + ' blobs eaten. ' + blobsLeft + ' blobs left.';
   const payload = {
-    message: blobsEaten + ' blobs eaten. Blobs left ' + blobsLeft,
-    imageUrl: 'https://blob-eater.vercel.app/BLOB-EATER-min.png'
+      result: message,
+      bytesSaved: bytes
   };
 
   return new NextResponse(JSON.stringify(payload), {

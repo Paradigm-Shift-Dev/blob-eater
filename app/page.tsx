@@ -3,93 +3,56 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
+    <>
+      <main className={styles.main}>
+        <div className={styles.description}>
+          <div>
+            <a
+              href="https://meinstrain.com"
+              target="_blank"
+            >
+              <Image
+                src="/meinstrain-app-logo.svg"
+                alt="MeinStrain Logo"
+                className={styles.logo}
+                width={140}
+                height={96}
+                priority
+              />
+            </a>
+          </div>
+        </div>
+
+        <div className={styles.center}>
+          <h1>
+            BLOB EATER
+          </h1>
+          <p>
+            Meet BLOB-EATER, the youngest team member of <a href="https://meinstrain.com/">MeinStrain</a>. It's has the intelligence of a jellyfish, but you can trust it to follow the daily cycle and eats blobs from our server.
+          </p>
+          <Image
+            className={styles.avatar}
+            src="/BLOB-EATER-min.png"
+            alt="BLOB EATER AVATAR"
+            width={512}
+            height={512}
+            priority
+          />
+          <h2>
+            Feeding schedule
+          </h2>
+          <p>At night, the BLOB EATER awakens and feed on all blobs not too young to die (less than an hour old).</p>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="/api/edge"
+            className={styles.button}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          >Feed now!</a>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
+      <footer className={styles.center}>
+        <small>Copyright 2024 © | <a href="https://meinstrain.com/legal-notice">Legal Notice</a> | MeinStrain OÜ | hello (at) meinstrain.com | Version 0.1.1</small>
+      </footer>
+    </>
   );
 }
