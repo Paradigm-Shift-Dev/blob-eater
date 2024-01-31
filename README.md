@@ -1,7 +1,7 @@
 ---
 name: Blog Eater
 slug: blob-eater
-description: `Meet BLOB EATER, the youngest team member of MeinStrain.
+description: Meet BLOB EATER, the youngest team member of MeinStrain.
 
 While MARI and MIRA are supremely knowledgable and embodied in the form of text and sound interactions IRL with humans, BLOB EATER has a unique purpose, role and embodiment.
 
@@ -12,6 +12,6 @@ EMBODIMENT
 We consider BLOB EATER as a digital house pet at team MeinStrain. Good boy!
 
 FEEDING
-At night, the BLOB EATER awakens and feed on all blobs not too young to die (less than an hour old).`
+At night, the BLOB EATER awakens and feed on all blobs not too young to die (less than an hour old).
 ---
 ![BLOB EATER](./public/BLOB-EATER-min.png)
