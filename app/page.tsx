@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </main>
       <footer className={styles.center}>
-        <small>Copyright 2024 © | <a href="https://meinstrain.com/legal-notice">Legal Notice</a> | MeinStrain OÜ | hello (at) meinstrain.com | Version 0.1.1</small>
+        <small>Copyright 2024 © | <a href="https://meinstrain.com/legal-notice">Legal Notice</a> | MeinStrain OÜ | hello (at) meinstrain.com | Version 0.2.0</small>
       </footer>
     </>
   );

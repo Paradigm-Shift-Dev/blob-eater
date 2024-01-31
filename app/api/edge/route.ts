@@ -2,9 +2,7 @@ import { list } from '@vercel/blob';
 import { del } from '@vercel/blob';
 import { NextRequest, NextResponse } from 'next/server';
  
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
 // Helper function
 function tooYoungToDie(uploadedAt: string, now: string): boolean {
@@ -18,7 +16,6 @@ function tooYoungToDie(uploadedAt: string, now: string): boolean {
 }
 
 export async function GET(req: NextRequest) {
-  console.log('GET REQUEST');
   const { blobs } = await list();
   const blobCount = blobs.length;
   let blobsEaten = 0;
@@ -34,7 +31,6 @@ export async function GET(req: NextRequest) {
             if (!tooYoungToDie(creationTime, currentTime)) {
                 // Eat the blob!
                 const blobUrl = blobs[blob].url;
-                // console.log(blobs[blob])
                 await del(blobUrl);
                 blobsEaten = blobsEaten + 1;
                 // Count the bytes eaten
